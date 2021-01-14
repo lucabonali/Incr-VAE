@@ -269,20 +269,7 @@ class Vae_cnn_BILSTM:
 
         return principalComponents
     
-    def plot_reconstruction_error(self):
-        
-        #CALCULATE RECONSTRUCTION ERROR AS AVERAGE FOR ALL POINTS (ON TRAIN AND ON UNSEEN)
-        reconstruction = self.model.predict([self.train_matrix])
-        
-        def mse_train(n_train):
-            errors_train = []
-            for i in range(n_train):
-                errors_train.append(abs(self.train_matrix[i] - reconstruction[i]))     
-            return np.array(errors_train)
 
-        train_error = mse_train(self.n_runs)
-        train_error_avg = np.mean(train_error, axis=2)
-        self.train_error_avg = np.mean(train_error_avg, axis=1)
 
         
         
